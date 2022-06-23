@@ -17,11 +17,6 @@ module.exports = {
       options: {
         id: process.env.GATSBY_GOOGLE_TAGMANAGER_ID,
         includeInDevelopment: false,
-        defaultDataLayer: function () {
-          return {
-            pageType: window.pageType,
-          }
-        },
         enableWebVitalsTracking: true,
         //selfHostedOrigin: "https://jbclient.jamobrand.com",
       },
