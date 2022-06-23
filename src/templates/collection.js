@@ -13,8 +13,6 @@ const Collection = ({ pageContext }) => {
   const { title, filterables, products } = pageContext
   const filteredProducts = useFilter(products, activeFilters)
 
-  console.log(filteredProducts)
-
   useEffect(() => {
     if (typeof window !== "undefined" || !filteredProducts) {
       window.dataLayer = window.dataLayer || []

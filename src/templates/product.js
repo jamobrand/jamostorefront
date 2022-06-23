@@ -36,8 +36,6 @@ const Product = ({ data, pageContext }) => {
     },
   } = useProduct(product)
 
-  console.log(product.images[0].url)
-
   const price = variant
     ? variant.prices.find(p => p.currency_code === currencyCode)
     : undefined
