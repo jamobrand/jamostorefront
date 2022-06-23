@@ -8,7 +8,6 @@ function SearchEngineOptimization({
   lang,
   meta,
   title,
-  url,
   site_name,
 }) {
   const { site } = useStaticQuery(
@@ -19,7 +18,6 @@ function SearchEngineOptimization({
             title
             description
             author
-            url
             site_name
           }
         }
@@ -53,10 +51,6 @@ function SearchEngineOptimization({
         {
           property: `og:type`,
           content: `website`,
-        },
-        {
-          property: `og:url`,
-          content: url,
         },
         {
           property: `og:site_name`,

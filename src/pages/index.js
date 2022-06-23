@@ -20,8 +20,7 @@ const IndexPage = ({ data }) => {
         {{
           "@context": "https://schema.org",
           "@type": "WebSite",
-          "@id": "https://jamobrand.com/#website",
-          url: "https://jamobrand.com/",
+          url: "https://jamobrand.com",
           name: "Jamobrand Home | Home Décor Products, Home & Kitchen, Home Décor Accents, & More",
           description:
             "Home Decor, Home and Kitchen Products, Decor Accents & More",

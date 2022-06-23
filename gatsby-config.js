@@ -9,7 +9,6 @@ module.exports = {
     title: `Home Décor Products, Home & Kitchen, Home Décor Accents, & More`,
     description: `Discover Home Décor Products on Jamobrand.com at a great price. Our Home Décor category offers a great selection of Home Décor Products and more`,
     site_name: `Jamobrand Home | Home Décor Products, Home & Kitchen, Home Décor Accents, & More`,
-    url: `https://jamobrand.com/`,
     author: `@jamobrand`,
   },
   plugins: [
