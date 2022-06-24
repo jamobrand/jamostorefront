@@ -64,7 +64,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        output: "/sitemap.xml",
+        output: "/",
         query: `{
           allSitePage {
             nodes {
@@ -78,10 +78,10 @@ module.exports = {
             return { ...page }
           })
         },
-        serialize: ({ path, modifiedGmt, changefreq, priority }) => {
+        serialize: ({ path, lastmod, changefreq, priority }) => {
           return {
             url: path,
-            lastmod: modifiedGmt,
+            lastmod,
             changefreq,
             priority,
           }
