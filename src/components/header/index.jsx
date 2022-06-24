@@ -61,25 +61,6 @@ const mockData = {
         },
       ],
     },
-    {
-      id: "3",
-      name: "Europe",
-      currency_code: "EUR",
-      countries: [
-        {
-          display_name: "Germany",
-        },
-        {
-          display_name: "France",
-        },
-        {
-          display_name: "Italy",
-        },
-        {
-          display_name: "Spain",
-        },
-      ],
-    },
   ],
 }
 

@@ -1,9 +1,9 @@
 import {
-  InstantSearch,
-  Hits,
-  SearchBox,
-  Pagination,
   Highlight,
+  Hits,
+  InstantSearch,
+  SearchBox,
+  connectStateResults,
 } from "react-instantsearch-dom"
 
 import React from "react"
@@ -14,26 +14,39 @@ const searchClient = instantMeiliSearch(
   process.env.GATSBY_MEILISEARCH_API_KEY
 )
 
-const Search = () => (
-  <InstantSearch indexName="products" searchClient={searchClient}>
-    <SearchBox />
-    <Hits hitComponent={Hit} />
-    <Pagination />
-  </InstantSearch>
-)
+const Search = () => {
+  const Results = connectStateResults(
+    ({ searchState, searchResults, children }) =>
+      searchState &&
+      searchState.query &&
+      searchResults &&
+      searchResults.nbHits !== 0 ? (
+        <div className="absolute top-full w-full p-2 bg-gray-200 shadow-md">
+          {children}
+        </div>
+      ) : (
+        <div></div>
+      )
+  )
+
+  return (
+    <div className="relative">
+      <InstantSearch indexName="products" searchClient={searchClient}>
+        <SearchBox submit={null} reset={null} />
+        <Results>
+          <Hits hitComponent={Hit} />
+        </Results>
+      </InstantSearch>
+    </div>
+  )
+}
 
 const Hit = ({ hit }) => {
   return (
-    <div key={hit.id}>
+    <div key={hit.id} className="relative">
       <div className="hit-name">
-        <Highlight attribute="name" hit={hit} />
+        <Highlight attribute="title" hit={hit} tagName="mark" />
       </div>
-      <img src={hit.image} align="left" alt={hit.name} />
-      <div className="hit-description">
-        <Snippet attribute="description" hit={hit} />
-      </div>
-      <div className="hit-info">price: {hit.price}</div>
-      <div className="hit-info">release date: {hit.releaseDate}</div>
     </div>
   )
 }

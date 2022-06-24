@@ -64,23 +64,41 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        output: "/",
+        output: "/sitemap.xml",
         query: `{
           allSitePage {
             nodes {
               path
             }
           }
+           allWpContentNode(filter: {nodeType: {in: ["Post", "Page"]}}) {
+            nodes {
+              ... on WpPost {
+                uri
+                modifiedGmt
+              }
+              ... on WpPage {
+                uri
+                modifiedGmt
+              }
+            }
+          }
         }`,
         resolveSiteUrl: () => siteUrl,
-        resolvePages: ({ allSitePage: { nodes: allPages } }) => {
-          const pathToDateMap = {}
+        resolvePages: ({
+          allSitePage: { nodes: allPages },
+          allWpContentNode: { nodes: allWpNodes },
+        }) => {
+          const wpNodeMap = allWpNodes.reduce((acc, node) => {
+            const { uri } = node
+            acc[uri] = node
 
-          const pages = allPages.map(page => {
-            return { ...page, ...pathToDateMap[page.path] }
+            return acc
+          }, {})
+
+          return allPages.map(page => {
+            return { ...page, ...wpNodeMap[page.path] }
           })
-
-          return pages
         },
         serialize: ({ path, modifiedGmt }) => {
           return {
@@ -112,6 +130,6 @@ module.exports = {
         icon: `src/images/icon-t.svg`,
       },
     },
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }
