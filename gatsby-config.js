@@ -6,9 +6,9 @@ const siteUrl = process.env.URL || `https://jamobrand.com`
 
 module.exports = {
   siteMetadata: {
-    title: `Home Décor Products, Home & Kitchen, Home Décor Accents, & More`,
-    description: `Discover Home Décor Products on Jamobrand.com at a great price. Our Home Décor category offers a great selection of Home Décor Products and more`,
-    site_name: `Jamobrand Home | Home Décor Products, Home & Kitchen, Home Décor Accents, & More`,
+    title: `Home Decor Products, Home & Kitchen & More`,
+    description: `Browse home decor products from wallpapers, decor items and accents, kitchenware and kitchen items, organization and storage products & more from Jamobrand Home`,
+    site_name: `Jamobrand Home | Home Décor Products, Home & Kitchen & More`,
     author: `@jamobrand`,
   },
   plugins: [
@@ -98,7 +98,23 @@ module.exports = {
       options: {
         host: "https://jamobrand.com",
         sitemap: "https://jamobrand.com/sitemap-0.xml",
-        policy: [{ userAgent: "*", allow: "/" }],
+        policy: [
+          {
+            userAgent: "*",
+            allow: "/",
+            disallow: [
+              "https://jamobrand.com/swap/",
+              "https://jamobrand.com/account/",
+              "https://jamobrand.com/swap-confirmed/",
+              "https://jamobrand.com/account/order-history/",
+              "https://jamobrand.com/shopping-bag/",
+              "https://jamobrand.com/return-confirmed/",
+              "https://jamobrand.com/order-confirmed/",
+              "https://jamobrand.com/create-return/",
+              "https://jamobrand.com/checkout/",
+            ],
+          },
+        ],
       },
     },
     {
