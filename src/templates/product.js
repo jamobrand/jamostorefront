@@ -62,6 +62,18 @@ const Product = ({ data, pageContext }) => {
         ],
       },
     })
+    window.dataLayer.push({
+      event: "AddToCart",
+      products: {
+        content_type: "product",
+        content_ids: [`${product.id}`],
+        content_name: `${product.title}`,
+        content_category: `${product.collection.title}`,
+        value: `${parseFloat(((price?.amount / 100) * 1 * 1).toFixed(2))}`,
+        currency: "KES",
+        contents: [{ id: `${product.id}`, quantity: `${quantity}` }],
+      },
+    })
     resetOptions()
   }
 
@@ -92,6 +104,17 @@ const Product = ({ data, pageContext }) => {
               quantity: `${quantity}`,
             },
           ],
+        },
+      })
+      window.dataLayer.push({
+        event: "ViewContent",
+        content: {
+          content_type: "product",
+          content_ids: [`${product.id}`],
+          content_name: `${product.title}`,
+          content_category: `${product.collection.title}`,
+          value: `${parseFloat(((price?.amount / 100) * 1 * 1).toFixed(2))}`,
+          currency: "KES",
         },
       })
     }

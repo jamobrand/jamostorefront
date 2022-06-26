@@ -26,17 +26,7 @@ const ShoppingBag = () => {
         ecommerce: {
           currency: "KES",
           value: `${parseFloat(((cart.subtotal / 100) * 1 * 1).toFixed(2))}`,
-          items: [
-            cart.items.map(
-              item =>
-                `item_id: ${item.id},
-                item_name: ${item.title},
-                price: ${parseFloat(
-                  ((item.unit_price / 100) * 1 * 1).toFixed(2)
-                )},
-                quantity: ${item.quantity}`
-            ),
-          ],
+          items: [cart.items],
         },
       })
     }

@@ -12,17 +12,18 @@ const CartReview = ({ cart }) => {
       ecommerce: {
         currency: "KES",
         value: `${parseFloat(((cart.subtotal / 100) * 1 * 1).toFixed(2))}`,
-        items: [
-          cart.items.map(
-            item =>
-              `item_id: ${item.id},
-                item_name: ${item.title},
-                price: ${parseFloat(
-                  ((item.unit_price / 100) * 1 * 1).toFixed(2)
-                )},
-                quantity: ${item.quantity}`
-          ),
-        ],
+        items: [cart.items],
+      },
+    })
+    window.dataLayer.push({
+      event: "InitiateCheckout",
+      products: {
+        content_type: "product",
+        content_ids: [`${cart.items.map(cart => cart.variant.product_id)}`],
+        value: `${parseFloat(((cart.subtotal / 100) * 1 * 1).toFixed(2))}`,
+        currency: "KES",
+        contents: [cart.items],
+        num_items: `${cart.items.length}`,
       },
     })
     // }

@@ -20,17 +20,7 @@ const Collection = ({ pageContext }) => {
       window.dataLayer.push({
         event: "view_item_list",
         ecommerce: {
-          items: [
-            filteredProducts.map(
-              product =>
-                `item_id: ${product.id},
-                 item_name: ${product.title},
-                 price: ${parseFloat(
-                   ((product.price / 100) * 1 * 1).toFixed(2)
-                 )},
-                 quantity: ${product.quantity}`
-            ),
-          ],
+          items: [filteredProducts],
         },
       })
     }

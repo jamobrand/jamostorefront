@@ -50,7 +50,7 @@ const IndexPage = ({ data }) => {
               as a token of our appreciation
             </p> */}
             <p className="mt-2 text-lg font-normal">
-              Shope home decor products today!
+              Shop home decor products today!
             </p>
             {/* <button className="btn-ui mt-4 min-w-full lg:min-w-0">
               Learn more
