@@ -48,6 +48,7 @@ const Product = ({ data, pageContext }) => {
       event: "add_to_cart",
       ecommerce: {
         currency: "KES",
+        value: `${parseFloat(((price?.amount / 100) * 1 * 1).toFixed(2))}`,
         items: [
           {
             google_business_vertical: "retail",
@@ -89,6 +90,7 @@ const Product = ({ data, pageContext }) => {
       window.dataLayer.push({
         event: "view_item",
         ecommerce: {
+          currency: "KES",
           value: `${parseFloat(((price?.amount / 100) * 1 * 1).toFixed(2))}`,
           items: [
             {
