@@ -23,7 +23,7 @@ module.exports = {
           }
         },
         enableWebVitalsTracking: true,
-        //selfHostedOrigin: "https://jbclient.jamobrand.com",
+        selfHostedOrigin: "https://jbclient.jamobrand.com",
       },
     },
     `gatsby-plugin-react-helmet`,
