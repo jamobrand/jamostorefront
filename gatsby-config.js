@@ -26,6 +26,16 @@ module.exports = {
         selfHostedOrigin: "https://jbclient.jamobrand.com",
       },
     },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: process.env.GATSBY_GA_TRACKING_ID,
+      },
+      pluginConfig: {
+        head: true,
+        origin: "https://jbclient.jamobrand.com",
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

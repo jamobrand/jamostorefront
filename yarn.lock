@@ -6941,6 +6941,14 @@ gatsby-parcel-config@^0.8.0:
     "@parcel/transformer-raw" "2.6.0"
     "@parcel/transformer-react-refresh-wrap" "2.6.0"
 
+gatsby-plugin-google-gtag@^4.17.0:
+  version "4.17.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-gtag/-/gatsby-plugin-google-gtag-4.17.0.tgz#67d2a864a0589a87e880ffdb275979df059ad346"
+  integrity sha512-m/KV28ob7+DBVQY2emI25jjZOl7E/eRxxLNH0XHSXPG/x8lyBrHJ2dGqlJ0lK18N/WE0c+pzQORWii8SZV5SVA==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    minimatch "^3.1.2"
+
 gatsby-plugin-google-tagmanager@^4.16.0:
   version "4.17.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-4.17.0.tgz#41d08994c9784fcece4885b11f50d362c9bcd3f3"
@@ -8227,6 +8235,11 @@ inquirer@^8.0.0:
     strip-ansi "^6.0.0"
     through "^2.3.6"
     wrap-ansi "^7.0.0"
+
+install@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/install/-/install-0.13.0.tgz#6af6e9da9dd0987de2ab420f78e60d9c17260776"
+  integrity sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==
 
 internal-slot@^1.0.3:
   version "1.0.3"
