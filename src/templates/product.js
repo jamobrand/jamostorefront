@@ -103,7 +103,7 @@ const Product = ({ data, pageContext }) => {
               price: `${parseFloat(
                 ((price?.amount / 100) * 1 * 1).toFixed(2)
               )}`,
-              quantity: `${quantity}`,
+              quantity: `${product.variants[0].inventory_quantity}`,
             },
           ],
         },
@@ -152,7 +152,11 @@ const Product = ({ data, pageContext }) => {
             "@type": "Offer",
             url: `https://jamobrand.com/ke/${handle}`,
             itemCondition: "https://schema.org/NewCondition",
-            availability: `${quantity > 0 ? "InStock" : "OutStock"}`,
+            availability: `${
+              product.variants[0].inventory_quantity > 0
+                ? "InStock"
+                : "OutStock"
+            }`,
             price: `${parseFloat(((price?.amount / 100) * 1 * 1).toFixed(2))}`,
             priceCurrency: "KES",
             priceValidUntil: "2022-12-12",
@@ -184,32 +188,80 @@ const Product = ({ data, pageContext }) => {
           <p className="text-lg mt-2 mb-4">
             {formatPrice(price?.amount, currencyCode, 1)}
           </p>
-          <p className="font-light">{product.description}</p>
-          {product.options.map((option, index) => {
-            return (
-              <div key={index} className="mt-6">
-                <ProductOptionSelector
-                  option={option}
-                  current={options[option.id]}
-                  updateOption={updateOptions}
+          <div class="h-10 bg-gradient-to-r from-orange-500 to-red-500 pt-2 pl-3 mb-4">
+            <p className="text-light font-medium text-white">
+              Get 7% off when you use coupon JULY2022 at checkout
+            </p>
+          </div>
+          <p className="font-light mb-3">{product.description}</p>
+          {/* {product.variants[0].inventory_quantity === 0 && (
+            <p className="font-light text-red-600">
+              Product Currently Unavailable
+            </p>
+          )} */}
+          {product.variants[0].inventory_quantity === 4 ? (
+            <p className="font-light text-red-600">
+              <span className="font-mediu">
+                Only {product.variants[0].inventory_quantity}
+              </span>{" "}
+              left in stock
+            </p>
+          ) : product.variants[0].inventory_quantity === 3 ? (
+            <p className="font-light text-red-600">
+              <span className="font-mediu">
+                Only {product.variants[0].inventory_quantity}
+              </span>{" "}
+              left in stock
+            </p>
+          ) : product.variants[0].inventory_quantity === 2 ? (
+            <p className="font-light text-red-600">
+              <span className="font-mediu">
+                Only {product.variants[0].inventory_quantity}
+              </span>{" "}
+              left in stock
+            </p>
+          ) : product.variants[0].inventory_quantity === 1 ? (
+            <p className="font-light text-red-600">
+              <span className="font-mediu">
+                Only {product.variants[0].inventory_quantity}
+              </span>{" "}
+              left in stock
+            </p>
+          ) : (
+            <p className="font-light text-red-600">
+              Product Currently Unavailable
+            </p>
+          )}
+          {product.variants[0].inventory_quantity > 0 && (
+            <>
+              {product.options.map((option, index) => {
+                return (
+                  <div key={index} className="mt-6">
+                    <ProductOptionSelector
+                      option={option}
+                      current={options[option.id]}
+                      updateOption={updateOptions}
+                    />
+                  </div>
+                )
+              })}
+
+              <div className="inline-flex mt-4">
+                <button
+                  className="btn-ui mr-2 px-12"
+                  onClick={() => handleAddToCart()}
+                  disabled={loading}
+                >
+                  Add to bag
+                </button>
+                <QuantitySelector
+                  quantity={quantity}
+                  increment={increaseQuantity}
+                  decrement={decreaseQuantity}
                 />
               </div>
-            )
-          })}
-          <div className="inline-flex mt-4">
-            <button
-              className="btn-ui mr-2 px-12"
-              onClick={() => handleAddToCart()}
-              disabled={loading}
-            >
-              Add to bag
-            </button>
-            <QuantitySelector
-              quantity={quantity}
-              increment={increaseQuantity}
-              decrement={decreaseQuantity}
-            />
-          </div>
+            </>
+          )}
           <div className="mt-12">
             {Object.keys(details).length > 0 && (
               <ProductExpandable title="Details">
@@ -272,6 +324,7 @@ export const query = graphql`
         }
         id
         title
+        inventory_quantity
         prices {
           amount
           currency_code
