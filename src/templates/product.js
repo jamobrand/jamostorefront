@@ -188,7 +188,7 @@ const Product = ({ data, pageContext }) => {
           <p className="text-lg mt-2 mb-4">
             {formatPrice(price?.amount, currencyCode, 1)}
           </p>
-          <div class="h-10 bg-gradient-to-r from-orange-500 to-red-500 pt-2 pl-3 mb-4">
+          <div class="h-14 bg-gradient-to-r from-orange-500 to-red-500 pt-2 pl-3 mb-4">
             <p className="text-light font-medium text-white">
               Get 7% off when you use coupon JULY2022 at checkout
             </p>
@@ -199,7 +199,7 @@ const Product = ({ data, pageContext }) => {
               Product Currently Unavailable
             </p>
           )} */}
-          {product.variants[0].inventory_quantity === 4 ? (
+          {/* {product.variants[0].inventory_quantity === 4 ? (
             <p className="font-light text-red-600">
               <span className="font-mediu">
                 Only {product.variants[0].inventory_quantity}
@@ -231,7 +231,7 @@ const Product = ({ data, pageContext }) => {
             <p className="font-light text-red-600">
               Product Currently Unavailable
             </p>
-          )}
+          )} */}
           {product.variants[0].inventory_quantity > 0 && (
             <>
               {product.options.map((option, index) => {
